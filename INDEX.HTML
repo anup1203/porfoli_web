@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ANUP YADAV | Data Science & AI Portfolio</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #1565C0;
+            --secondary: #00BCD4;
+            --dark: #1B293A;
+            --white: #ffffff;
+            --bg-light: #F5F7FA;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; background-color: var(--white); color: #333; scroll-behavior: smooth; line-height: 1.6; }
+
+        /* --- HEADER --- */
+        header {
+            position: sticky; top: 0; z-index: 1000;
+            background: var(--dark);
+            border-bottom: 3px solid var(--secondary);
+            padding: 15px 0;
+        }
+        .nav-container {
+            max-width: 1200px; margin: auto; padding: 0 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-container h1 { color: #fff; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; }
+        .nav-links { display: flex; list-style: none; gap: 25px; }
+        .nav-links a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--secondary); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 75vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("machine1.png") center/cover no-repeat;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; color: #fff; padding: 0 20px;
+        }
+        .hero h2 { font-size: 4rem; font-weight: 900; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
+        .hero p { 
+            font-size: 1.8rem; color: var(--secondary); font-style: italic; 
+            max-width: 900px; margin: 0 auto; text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+        }
+
+        /* --- SUMMARY CARD (OVERLAP) --- */
+        .summary-container { max-width: 1100px; margin: -100px auto 60px; padding: 0 20px; position: relative; z-index: 10; }
+        .summary-card {
+            background: var(--white); padding: 45px; border-radius: 15px;
+            box-shadow: var(--shadow); display: flex; align-items: center; gap: 40px;
+        }
+        .summary-text { flex: 2; }
+        .summary-text h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 15px; }
+        .summary-image { flex: 1; text-align: center; }
+        .summary-image img { width: 100%; max-width: 220px; border-radius: 12px; border: 5px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+
+        /* --- SECTIONS --- */
+        .section-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 40px; font-weight: 900; }
+        .padding-section { padding: 80px 20px; }
+        .bg-light { background-color: var(--bg-light); }
+
+        /* GRID LAYOUTS */
+        .grid-container { max-width: 1150px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        /* Expertise Cards */
+        .expertise-card {
+            background: var(--white); padding: 30px; border-radius: 12px;
+            border-left: 6px solid var(--secondary); box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: 0.3s ease;
+        }
+        .expertise-card:hover { transform: translateY(-10px); }
+        .expertise-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
+        .expertise-card h4 { margin-bottom: 10px; font-size: 1.2rem; }
+
+        /* Project Cards */
+        .project-card {
+            background: var(--white); padding: 30px; border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: left;
+        }
+        .project-card h4 { color: var(--primary); margin-bottom: 10px; }
+        .btn-github {
+            display: inline-block; margin-top: 15px; padding: 10px 20px;
+            background: #607D8B; color: #fff; text-decoration: none;
+            border-radius: 8px; font-weight: bold; transition: 0.3s;
+        }
+        .btn-github:hover { background: #455A64; }
+
+        /* --- CONTACT SECTION --- */
+        .contact-section { background: var(--dark); color: #fff; padding: 100px 20px; }
+        .contact-wrapper { max-width: 1100px; margin: auto; display: flex; gap: 60px; }
+        .contact-info { flex: 1; }
+        .contact-info h2 { color: var(--secondary); font-size: 2.2rem; margin-bottom: 20px; }
+        .contact-info p { font-size: 1.1rem; margin-bottom: 15px; }
+        .contact-info i { margin-right: 10px; color: var(--secondary); }
+        
+        .contact-form { flex: 1.5; display: flex; flex-direction: column; gap: 15px; }
+        .contact-form input, .contact-form textarea {
+            padding: 15px; border-radius: 8px; border: none; font-size: 1rem; width: 100%;
+        }
+        .send-btn {
+            background: #FF5722; color: #fff; padding: 16px; border: none;
+            border-radius: 8px; font-weight: 900; font-size: 1.1rem; cursor: pointer; transition: 0.3s;
+        }
+        .send-btn:hover { background: #E64A19; transform: scale(1.02); }
+
+        /* FOOTER */
+        footer { background: #111; color: #888; text-align: center; padding: 30px; font-size: 0.9rem; }
+
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero h2 { font-size: 2.5rem; }
+            .hero p { font-size: 1.3rem; }
+            .summary-card, .contact-wrapper { flex-direction: column; text-align: center; }
+            .summary-text { text-align: center; }
+            .summary-card { margin-top: -50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <h1>ANUP YADAV | DATA SCIENCE AI</h1>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h2>Data Science & Machine Learning</h2>
+        <p>Driving organizational success with strong analytical abilities and technical skills.</p>
+    </section>
+
+    <div class="summary-container">
+        <section id="about" class="summary-card">
+            <div class="summary-text">
+                <h3>Professional Summary</h3>
+                <p>Certified Data Science, ML, Deep Learning, & AI Innovation Expert. Driven Computer Science student with proven expertise in Data Analytics, Machine Learning, and Data Structures & Algorithms (DSA).</p>
+                <br>
+                <p>Seeking a challenging role in Data Science where strong analytical abilities can drive success. Solved 175+ problems on LeetCode.</p>
+            </div>
+            <div class="summary-image">
+                <img src="upload.jpeg" alt="Anup Yadav Professional Photo">
+            </div>
+        </section>
+    </div>
+
+    <section id="expertise" class="padding-section container">
+        <h2 class="section-title">My Key Expertise Areas</h2>
+        <div class="grid-container">
+            <div class="expertise-card">
+                <i class="fas fa-brain"></i>
+                <h4>Machine Learning</h4>
+                <p>Developing core ML projects including Movie Recommendation Systems and classification models.</p>
+            </div>
+            <div class="expertise-card">
+                <i class="fas fa-chart-line"></i>
+                <h4>Data Visualization</h4>
+                <p>Expertise in communicating data-driven insights using Python (Matplotlib, Seaborn).</p>
+            </div>
+            <div class="expertise-card">
+                <i class="fas fa-code"></i>
+                <h4>DSA (Java)</h4>
+                <p>Robust foundation in algorithm design with 175+ LeetCode problems solved.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="padding-section bg-light">
+        <h2 class="section-title">Key Projects Showcase</h2>
+        <div class="grid-container">
+            <div class="project-card">
+                <h4>Project 1</h4>
+                <p>Movie Recommendation System using Python and Machine Learning.</p>
+                <a href="#" class="btn-github"><i class="fab fa-github"></i> View GitHub</a>
+            </div>
+            <div class="project-card">
+                <h4>Project 2</h4>
+                <p>Data Visualization Dashboard using Matplotlib & Seaborn.</p>
+                <a href="#" class="btn-github"><i class="fab fa-github"></i> View GitHub</a>
+            </div>
+            <div class="project-card">
+                <h4>Project 3</h4>
+                <p>SQL-based Data Analysis on large datasets.</p>
+                <a href="#" class="btn-github"><i class="fab fa-github"></i> View GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="contact-wrapper">
+            <div class="contact-info">
+                <h2>Contact Me</h2>
+                <p><i class="fas fa-phone"></i> +91 9354431680</p>
+                <p><i class="fas fa-envelope"></i> anupyadav1203@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Greater Noida, UP</p>
+                <div style="margin-top: 25px; font-size: 2rem; display: flex; gap: 20px;">
+                    <a href="#" style="color:#fff;"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" style="color:#fff;"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+            <form class="contact-form" action="https://formspree.io/f/anupyadav1203@gmail.com" method="POST">
+                <input type="text" name="name" placeholder="Full Name" required>
+                <input type="email" name="email" placeholder="Email Address" required>
+                <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
+                <button type="submit" class="send-btn">SEND MESSAGE</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 ANUP YADAV | Data Science Portfolio
+    </footer>
+
+</body>
+</html>
