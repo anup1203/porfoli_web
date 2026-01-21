@@ -5,224 +5,258 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ANUP YADAV | Data Science & AI Portfolio</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         :root {
-            --primary: #1565C0;
-            --secondary: #00BCD4;
-            --dark: #1B293A;
+            --primary: #0D47A1;
+            --secondary: #00E5FF;
+            --dark: #0A192F;
             --white: #ffffff;
-            --bg-light: #F5F7FA;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            --bg-light: #f4f7f9;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; background-color: var(--white); color: #333; scroll-behavior: smooth; line-height: 1.6; }
+        body { 
+            font-family: 'Poppins', sans-serif; 
+            background-color: var(--white); 
+            color: #333; 
+            scroll-behavior: smooth; 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
         /* --- HEADER --- */
         header {
-            position: sticky; top: 0; z-index: 1000;
-            background: var(--dark);
-            border-bottom: 3px solid var(--secondary);
+            position: fixed; width: 100%; top: 0; z-index: 1000;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--primary);
             padding: 15px 0;
         }
         .nav-container {
-            max-width: 1200px; margin: auto; padding: 0 20px;
+            max-width: 1200px; margin: auto; padding: 0 25px;
             display: flex; justify-content: space-between; align-items: center;
         }
-        .nav-container h1 { color: #fff; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px; }
-        .nav-links { display: flex; list-style: none; gap: 25px; }
-        .nav-links a { color: #fff; text-decoration: none; font-weight: bold; text-transform: uppercase; font-size: 0.9rem; transition: 0.3s; }
+        .nav-container h1 { color: #fff; font-size: 1.3rem; font-weight: 800; letter-spacing: 2px; }
+        .nav-links { display: flex; list-style: none; gap: 30px; }
+        .nav-links a { color: #fff; text-decoration: none; font-weight: 500; font-size: 0.85rem; transition: var(--transition); }
         .nav-links a:hover { color: var(--secondary); }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO --- */
         .hero {
-            height: 75vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("machine1.png") center/cover no-repeat;
+            height: 85vh;
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.7)), url("machine.jpg") center/cover no-repeat;
             display: flex; flex-direction: column; align-items: center; justify-content: center;
             text-align: center; color: #fff; padding: 0 20px;
         }
-        .hero h2 { font-size: 4rem; font-weight: 900; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.5); }
-        .hero p { 
-            font-size: 1.8rem; color: var(--secondary); font-style: italic; 
-            max-width: 900px; margin: 0 auto; text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
-        }
+        .hero h2 { font-size: 4rem; font-weight: 800; margin-bottom: 10px; background: linear-gradient(to right, #fff, var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p { font-size: 1.7rem; color: #ccd6f6; font-style: italic; max-width: 900px; margin: 0 auto; }
 
-        /* --- SUMMARY CARD (OVERLAP) --- */
-        .summary-container { max-width: 1100px; margin: -100px auto 60px; padding: 0 20px; position: relative; z-index: 10; }
+        /* --- SUMMARY OVERLAP --- */
+        .summary-container { max-width: 1100px; margin: -120px auto 60px; padding: 0 25px; position: relative; z-index: 10; }
         .summary-card {
-            background: var(--white); padding: 45px; border-radius: 15px;
-            box-shadow: var(--shadow); display: flex; align-items: center; gap: 40px;
+            background: var(--white); padding: 50px; border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 50px;
+            border-bottom: 5px solid var(--primary);
         }
-        .summary-text { flex: 2; }
-        .summary-text h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 15px; }
-        .summary-image { flex: 1; text-align: center; }
-        .summary-image img { width: 100%; max-width: 220px; border-radius: 12px; border: 5px solid var(--primary); box-shadow: 0 5px 15px rgba(0,0,0,0.2); }
+        .summary-text h3 { color: var(--primary); font-size: 2.2rem; margin-bottom: 15px; }
+        .summary-image img { width: 100%; max-width: 240px; border-radius: 20px; border: 6px solid var(--bg-light); transition: var(--transition); }
+        .summary-image img:hover { transform: scale(1.03) rotate(2deg); }
 
-        /* --- SECTIONS --- */
-        .section-title { text-align: center; color: var(--primary); font-size: 2rem; margin-bottom: 40px; font-weight: 900; }
-        .padding-section { padding: 80px 20px; }
-        .bg-light { background-color: var(--bg-light); }
+        /* --- SERVICES SECTION --- */
+        .section { padding: 100px 25px; }
+        .section-title { text-align: center; color: var(--primary); font-size: 2.5rem; margin-bottom: 60px; font-weight: 800; text-transform: uppercase; }
+        .bg-light { background: linear-gradient(to bottom, #fff, #f4f7f9); }
 
-        /* GRID LAYOUTS */
-        .grid-container { max-width: 1150px; margin: auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        /* Expertise Cards */
-        .expertise-card {
-            background: var(--white); padding: 30px; border-radius: 12px;
-            border-left: 6px solid var(--secondary); box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            transition: 0.3s ease;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px; max-width: 1200px; margin: auto; text-align: center;
         }
-        .expertise-card:hover { transform: translateY(-10px); }
-        .expertise-card i { font-size: 2.5rem; color: var(--primary); margin-bottom: 15px; }
-        .expertise-card h4 { margin-bottom: 10px; font-size: 1.2rem; }
-
-        /* Project Cards */
-        .project-card {
-            background: var(--white); padding: 30px; border-radius: 12px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08); text-align: left;
+        .service-item { transition: var(--transition); padding: 20px; }
+        .service-item:hover { transform: translateY(-10px); }
+        .service-item img {
+            width: 160px; height: 160px; border-radius: 50%; object-fit: cover;
+            margin-bottom: 25px; border: 4px solid var(--secondary);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        .project-card h4 { color: var(--primary); margin-bottom: 10px; }
-        .btn-github {
-            display: inline-block; margin-top: 15px; padding: 10px 20px;
-            background: #607D8B; color: #fff; text-decoration: none;
-            border-radius: 8px; font-weight: bold; transition: 0.3s;
-        }
-        .btn-github:hover { background: #455A64; }
+        .service-item h4 { color: var(--primary); font-size: 1.3rem; margin-bottom: 15px; font-weight: 700; }
+        .service-item p { font-size: 0.95rem; color: #555; line-height: 1.7; }
 
-        /* --- CONTACT SECTION --- */
-        .contact-section { background: var(--dark); color: #fff; padding: 100px 20px; }
-        .contact-wrapper { max-width: 1100px; margin: auto; display: flex; gap: 60px; }
-        .contact-info { flex: 1; }
-        .contact-info h2 { color: var(--secondary); font-size: 2.2rem; margin-bottom: 20px; }
-        .contact-info p { font-size: 1.1rem; margin-bottom: 15px; }
-        .contact-info i { margin-right: 10px; color: var(--secondary); }
-        
-        .contact-form { flex: 1.5; display: flex; flex-direction: column; gap: 15px; }
-        .contact-form input, .contact-form textarea {
-            padding: 15px; border-radius: 8px; border: none; font-size: 1rem; width: 100%;
+        /* --- TOOLS SECTION --- */
+        .tools-flex { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; max-width: 1000px; margin: auto; }
+        .tool-box {
+            background: #fff; padding: 15px 30px; border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); display: flex; align-items: center; gap: 12px;
+            transition: var(--transition); border: 1px solid #eee;
         }
-        .send-btn {
-            background: #FF5722; color: #fff; padding: 16px; border: none;
-            border-radius: 8px; font-weight: 900; font-size: 1.1rem; cursor: pointer; transition: 0.3s;
-        }
-        .send-btn:hover { background: #E64A19; transform: scale(1.02); }
+        .tool-box:hover { background: var(--primary); color: #fff; transform: scale(1.05); }
+        .tool-box i { font-size: 1.5rem; }
 
-        /* FOOTER */
-        footer { background: #111; color: #888; text-align: center; padding: 30px; font-size: 0.9rem; }
+        /* --- PROJECTS --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: auto; }
+        .project-card { background: #fff; padding: 30px; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); transition: var(--transition); border-left: 5px solid var(--secondary); }
+        .project-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .btn-github { display: inline-block; margin-top: 15px; padding: 10px 20px; background: var(--dark); color: #fff; text-decoration: none; border-radius: 30px; font-weight: 600; font-size: 0.8rem; transition: 0.3s; }
+        .btn-github:hover { background: var(--primary); }
 
-        /* RESPONSIVE */
+        /* --- CONTACT --- */
+        .contact-section { background: var(--dark); color: #fff; padding: 80px 25px; text-align: center; }
+        .contact-info-row { display: flex; justify-content: center; gap: 50px; flex-wrap: wrap; margin-bottom: 40px; }
+        .info-item { display: flex; align-items: center; gap: 10px; font-size: 1.1rem; }
+        .info-item i { color: var(--secondary); }
+        .social-links { display: flex; justify-content: center; gap: 25px; }
+        .social-links a { width: 55px; height: 55px; border-radius: 50%; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; transition: var(--transition); border: 1px solid rgba(255,255,255,0.1); }
+        .social-links a:hover { background: var(--secondary); color: var(--dark); transform: translateY(-8px) rotate(360deg); }
+
+        footer { background: #050c16; color: #888; text-align: center; padding: 30px; font-size: 0.9rem; }
+
         @media (max-width: 900px) {
-            .hero h2 { font-size: 2.5rem; }
-            .hero p { font-size: 1.3rem; }
-            .summary-card, .contact-wrapper { flex-direction: column; text-align: center; }
-            .summary-text { text-align: center; }
-            .summary-card { margin-top: -50px; }
+            .hero h2 { font-size: 2.8rem; }
+            .summary-card { flex-direction: column; text-align: center; }
+            .contact-info-row { flex-direction: column; gap: 20px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <h1>ANUP YADAV | DATA SCIENCE AI</h1>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </header>
-
-    <section class="hero">
-        <h2>Data Science & Machine Learning</h2>
-        <p>Driving organizational success with strong analytical abilities and technical skills.</p>
-    </section>
-
-    <div class="summary-container">
-        <section id="about" class="summary-card">
-            <div class="summary-text">
-                <h3>Professional Summary</h3>
-                <p>Certified Data Science, ML, Deep Learning, & AI Innovation Expert. Driven Computer Science student with proven expertise in Data Analytics, Machine Learning, and Data Structures & Algorithms (DSA).</p>
-                <br>
-                <p>Seeking a challenging role in Data Science where strong analytical abilities can drive success. Solved 175+ problems on LeetCode.</p>
-            </div>
-            <div class="summary-image">
-                <img src="upload.jpeg" alt="Anup Yadav Professional Photo">
-            </div>
-        </section>
+<header>
+    <div class="nav-container">
+        <h1>Anup Yadav</h1>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </div>
+</header>
 
-    <section id="expertise" class="padding-section container">
-        <h2 class="section-title">My Key Expertise Areas</h2>
-        <div class="grid-container">
-            <div class="expertise-card">
-                <i class="fas fa-brain"></i>
-                <h4>Machine Learning</h4>
-                <p>Developing core ML projects including Movie Recommendation Systems and classification models.</p>
-            </div>
-            <div class="expertise-card">
-                <i class="fas fa-chart-line"></i>
-                <h4>Data Visualization</h4>
-                <p>Expertise in communicating data-driven insights using Python (Matplotlib, Seaborn).</p>
-            </div>
-            <div class="expertise-card">
-                <i class="fas fa-code"></i>
-                <h4>DSA (Java)</h4>
-                <p>Robust foundation in algorithm design with 175+ LeetCode problems solved.</p>
-            </div>
+<section class="hero">
+    <h2>Data Science & AI</h2>
+    <p>Driving organizational success with strong analytical abilities and technical skills.</p>
+</section>
+
+<div class="summary-container" id="about">
+    <section class="summary-card">
+        <div class="summary-text">
+            <h3>Professional Profile</h3>
+            <p>Certified Data Science, ML, & AI Innovation Expert. I specialize in turning raw data into actionable business intelligence using Python, SQL, and Power BI. With a strong foundation in complex algorithm design and 175+ LeetCode problems solved, I build optimized analytical solutions.</p>
+            <p style="margin-top:20px; font-weight: 600; color: var(--primary);">B.Tech CSE (2022-2026) | G.L. Bajaj Institute of Tech</p>
+        </div>
+        <div class="summary-image">
+            <img src="upload.jpeg" alt="Anup Yadav">
         </div>
     </section>
+</div>
 
-    <section id="projects" class="padding-section bg-light">
-        <h2 class="section-title">Key Projects Showcase</h2>
-        <div class="grid-container">
-            <div class="project-card">
-                <h4>Project 1</h4>
-                <p>Movie Recommendation System using Python and Machine Learning.</p>
-                <a href="#" class="btn-github"><i class="fab fa-github"></i> View GitHub</a>
-            </div>
-            <div class="project-card">
-                <h4>Project 2</h4>
-                <p>Data Visualization Dashboard using Matplotlib & Seaborn.</p>
-                <a href="#" class="btn-github"><i class="fab fa-github"></i> View GitHub</a>
-            </div>
-            <div class="project-card">
-                <h4>Project 3</h4>
-                <p>SQL-based Data Analysis on large datasets.</p>
-                <a href="#" class="btn-github"><i class="fab fa-github"></i> View GitHub</a>
-            </div>
+<section id="services" class="section bg-light">
+    <h2 class="section-title">Specialized Services</h2>
+    <div class="services-grid">
+        <div class="service-item">
+            <img src="data_cleaning.jpg" alt="Data Cleaning">
+            <h4>DATA CLEANING</h4>
+            <p>I use tools like Python, Pandas, NumPy, Excel, and SQL to prepare raw datasets for analysis by handling missing values, removing duplicates, and correcting inconsistencies.</p>
         </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <div class="contact-wrapper">
-            <div class="contact-info">
-                <h2>Contact Me</h2>
-                <p><i class="fas fa-phone"></i> +91 9354431680</p>
-                <p><i class="fas fa-envelope"></i> anupyadav1203@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Greater Noida, UP</p>
-                <div style="margin-top: 25px; font-size: 2rem; display: flex; gap: 20px;">
-                    <a href="#" style="color:#fff;"><i class="fab fa-linkedin"></i></a>
-                    <a href="#" style="color:#fff;"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
-
-            <form class="contact-form" action="https://formspree.io/f/anupyadav1203@gmail.com" method="POST">
-                <input type="text" name="name" placeholder="Full Name" required>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <textarea name="message" rows="5" placeholder="Your Message..." required></textarea>
-                <button type="submit" class="send-btn">SEND MESSAGE</button>
-            </form>
+        <div class="service-item">
+            <img src="data_entry.jpg" alt="Data Entry">
+            <h4>DATA ENTRY</h4>
+            <p>I accurately collect, organize, and input data from various sources into structured formats and databases. My focus is on efficiency, precision, and maintaining data integrity.</p>
         </div>
-    </section>
+        <div class="service-item">
+            <img src="data_analysis.jpg" alt="Data Analysis">
+            <h4>DATA ANALYSIS</h4>
+            <p>I analyze data to uncover patterns, trends, and insights that support informed decision-making. Using tools like Excel, Power BI, and Python, I transform raw data into actionable reports.</p>
+        </div>
+        <div class="service-item">
+            <img src="data_viz.jpg" alt="Data Visualization">
+            <h4>DATA VISUALIZATION</h4>
+            <p>I create clear and impactful visualizations that turn complex data into easy-to-understand insights. Using tools like Power BI, Tableau, and Excel, I design dashboards that support data-driven decisions.</p>
+        </div>
+        <div class="service-item">
+            <img src="data_story.jpg" alt="Data Story Telling">
+            <h4>DATA STORY TELLING</h4>
+            <p>I combine data insights with clear narratives to communicate meaningful stories that drive action. Using tools like Power BI and Tableau, I present data in a way that engages audiences.</p>
+        </div>
+        <div class="service-item">
+            <img src="data_interpretation.jpg" alt="Data Interpretation">
+            <h4>DATA INTERPRETATION</h4>
+            <p>I analyze and interpret data to extract meaningful insights that guide informed decisions. I translate complex datasets into actionable business intelligence.</p>
+        </div>
+    </div>
+</section>
 
-    <footer>
-        &copy; 2026 ANUP YADAV | Data Science Portfolio
-    </footer>
+<section id="experience" class="section">
+    <h2 class="section-title">Experience</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <span style="color: var(--secondary); font-weight: 700;">JAN 2026 - PRESENT</span>
+            <h4>Data Analyst Team Leader</h4>
+            <p><strong>ACC</strong></p>
+            <p>Leading analytics tasks, ensuring process adherence, and preparing technical documentation and insight summaries.</p>
+        </div>
+        <div class="project-card">
+            <span style="color: var(--secondary); font-weight: 700;">2025</span>
+            <h4>AI & Data Science Trainee</h4>
+            <p><strong>IIT Indore</strong></p>
+            <p>Executed data cleaning, built ML models, and designed optimized SQL queries for automated reporting.</p>
+        </div>
+    </div>
+</section>
+
+<section id="tools" class="section bg-light">
+    <h2 class="section-title">Tools I Work With</h2>
+    <div class="tools-flex">
+        <div class="tool-box"><i class="fab fa-python" style="color: #3776ab;"></i> <strong>Python</strong></div>
+        <div class="tool-box"><i class="fas fa-database" style="color: #336791;"></i> <strong>SQL</strong></div>
+        <div class="tool-box"><i class="fas fa-file-excel" style="color: #1D6F42;"></i> <strong>Excel</strong></div>
+        <div class="tool-box"><i class="fas fa-chart-bar" style="color: #F2C811;"></i> <strong>Power BI</strong></div>
+        <div class="tool-box"><i class="fas fa-project-diagram" style="color: #E97627;"></i> <strong>Tableau</strong></div>
+    </div>
+</section>
+
+<section id="projects" class="section">
+    <h2 class="section-title">Featured Projects</h2>
+    <div class="project-grid">
+        <div class="project-card">
+            <h4>Domino's Sales Analysis</h4>
+            <p>Analyzed revenue trends and customer behavior using SQL Joins and CTEs.</p>
+            <a href="https://github.com/anup1203" target="_blank" class="btn-github"><i class="fab fa-github"></i> View GitHub</a>
+        </div>
+        <div class="project-card">
+            <h4>Movie Recommendation System</h4>
+            <p>Developed a personalized ranking model using Python and Cosine Similarity.</p>
+            <a href="https://github.com/anup1203" target="_blank" class="btn-github"><i class="fab fa-github"></i> View GitHub</a>
+        </div>
+        <div class="project-card">
+            <h4>Exploratory Data Analysis</h4>
+            <p>Identified trends and anomalies via visual insights using Pandas and Seaborn.</p>
+            <a href="https://github.com/anup1203" target="_blank" class="btn-github"><i class="fab fa-github"></i> View GitHub</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <h2>Let's Connect</h2>
+    <div class="contact-info-row">
+        <div class="info-item"><i class="fas fa-envelope"></i><span>anupyadav1203@gmail.com</span></div>
+        <div class="info-item"><i class="fas fa-phone-alt"></i><span>+91 9354431680</span></div>
+        <div class="info-item"><i class="fas fa-map-marker-alt"></i><span>Greater Noida, India</span></div>
+    </div>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/anup1203/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/anup1203" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="tel:+919354431680"><i class="fas fa-phone"></i></a>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 ANUP YADAV | Data Science & AI Portfolio</p>
+</footer>
 
 </body>
 </html>
